@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Box Radius Previewer</title>
+    <style>
+        .box {
+            width: 600px;
+            height: 300px;
+            border: 1px solid black;
+            /* border-radius: 21px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+
+    </div>
+    <p>top</p>
+    <input type="range" class="slider" id="top" min="0" max="100">
+    <p>right</p>
+    <input type="range" class="slider" id="right" min="0" max="100">
+    <p>bottom</p>
+    <input type="range" class="slider" id="bottom" min="0" max="100">
+    <p>left</p>
+    <input type="range" class="slider" id="left" min="0" max="100">
+    <script>
+        let array = document.getElementsByClassName('slider')
+        let box = document.getElementsByClassName('box')[0];
+        for (let index = 0; index < array.length; index++) {
+            const element = array[index];
+            element.addEventListener('change', (event) => {
+                indexOf = {
+                    top: 0,
+                    right: 1,
+                    bottom: 2,
+                    left: 3,
+                }
+                let index = indexOf[event.target.id]
+                let value = array[0].value + "em " +
+                    + array[1].value + "em "
+                    + array[2].value + "em "
+                    + array[3].value + "em "
+                    console.log(value);
+                box.style.borderRadius = value
+            })
+        }
+    </script>
+</body>
+
+</html>
